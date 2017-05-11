@@ -6,7 +6,9 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class JDBCTest {
-	static{
+	
+	
+	public JDBCTest(){
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (ClassNotFoundException e) {
@@ -15,9 +17,8 @@ public class JDBCTest {
 			
 		}
 	}
-
 	
-	public static void main(String[] args) throws SQLException{
+	public static void startDB(){
 		String dburl = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -93,5 +94,10 @@ public class JDBCTest {
 			if(pstmt != null){try{pstmt.close();}catch(Exception e){}}
 			if(rs != null){try{rs.close();}catch(Exception e){}}
 		}
+	}
+
+	
+	public static void main(String[] args) throws SQLException{
+		startDB();
 	}
 }
